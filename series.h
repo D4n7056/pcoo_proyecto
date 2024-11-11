@@ -46,9 +46,6 @@ class Serie {
         string get_descripcion(){
             return descripcion;
         }
-        string get_tipo(){
-            return tipo;
-        }
         float get_calificación(){
             return calificacion;
         }
@@ -64,9 +61,6 @@ class Serie {
         }
         void set_descripcion(string _descripcion){
             descripcion = _descripcion;
-        }
-        void set_tipo(string _tipo){
-            tipo = _tipo;
         }
         void set_calificacion(float _calificacion){
             calificacion = _calificacion;
