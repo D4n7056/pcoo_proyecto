@@ -1,74 +1,26 @@
-#include <iostream>
-using namespace std;
-
 #ifndef DIBUJOS_H
 #define DIBUJOS_H
 
-class Dibujos {
+#include <iostream>
+#include "producto.h"
+using namespace std;
+
+class Dibujos : public Producto {
     private:
-        int cantidad; 
-        int tamano; 
-        string descripcion;
         string material;
         string estilo;
     
     public: 
-        Dibujos(){
-           cantidad = 5;
-           tamano = 1;
-           descripcion = "dibujo";
+        Dibujos() : Producto(){
            material = "acuarela";
            estilo = "tradicional";
         }
         
-        Dibujos(int _cantidad, int _tamano, string _descripcion, string _material, string _estilo){
-            cantidad = _cantidad;
-            tamano = _tamano;
-            descripcion = _descripcion;
+        Dibujos(string _material, string _estilo, int _cantidad, int _tamano, string _descripcion, float _precio_unitario_1, float _precio_unitario_2, float _precio_unitario_3 ) :  Producto( _cantidad, _tamano, _descripcion, _precio_unitario_1, _precio_unitario_2, _precio_unitario_3){
             material = _material;
             estilo = _estilo;
         }
 
-        void imprime_datos(){
-            cout << "CANTIDAD: " << cantidad << endl;
-            cout << "TAMAÑO: " << tamano << endl;
-            cout << "DESCRIPCION: " << descripcion << endl;
-            cout << "MATERIAL: " << material << endl;
-            cout << "ESTILO: " << estilo << endl;
-            cout << "-----------------------\n";
-        }
-
-        void calcular_precio(int cantidad, int tamano){
-            float precio;
-            if (tamano = 1){
-                precio = 25*cantidad;
-            }
-            else{
-                if (tamano = 2){
-                    precio = 50*cantidad;
-                }
-                else{
-                    if (tamano = 3){
-                        precio = 100*cantidad;
-                    }
-                    else{
-                        cout << "valor no valido";
-                    }
-                }
-            }
-        cout << "PRECIO: " << precio << endl;
-        cout << "----------------------- \n";
-        }
-
-        int get_cantidad(){
-            return cantidad;
-        }
-        int get_tamano(){
-            return tamano;
-        }
-        string get_descripcion(){
-            return descripcion;
-        }
         string get_material(){
             return material;
         }
@@ -76,15 +28,6 @@ class Dibujos {
             return estilo;
         }
 
-        void set_cantidad(int _cantidad){
-            cantidad = _cantidad;
-        }
-        void set_tamano(int _tamano){
-            tamano = _tamano;
-        }
-        void set_descripcion(string _descripcion){
-            descripcion = _descripcion;
-        }
         void set_material(string _material){
             material = _material;
         }
