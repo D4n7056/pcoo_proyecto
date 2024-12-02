@@ -1,29 +1,56 @@
+// alumno: Daniela Iliana Rivera García
+// matricula: A07107056
 #ifndef PINES_H
 #define PINES_H
 
 #include <iostream>
 #include "producto.h"
+
 using namespace std;
 
-class Pines : public Producto{
-    private:
-        string tema;
-    
-    public: 
-        Pines() : Producto(){
-           tema = "botanica";
-        }
+// Clase Pines heredada de Producto
+class Pines : public Producto {
+private:
+    // Variable privada 
+    string temaPines;
 
-        Pines(string _tema, int _cantidad, int _tamano, string _descripcion, float _precio_unitario_1, float _precio_unitario_2, float _precio_unitario_3 ) :  Producto( _cantidad, _tamano, _descripcion, _precio_unitario_1, _precio_unitario_2, _precio_unitario_3){
-            tema = _tema;
-        }
+public:
+    // Constructor por defecto
+    Pines() : Producto() {
+        temaPines = "Botánica";
+    }
 
-        string get_tema(){
-            return tema;
-        }
+    /**
+     * Constructor con parámetros para inicializar un pin.
+     * tema del pin.
+     * cantidad de pines.
+     * tamano del pin.
+     * descripcion del pin.
+     * precioUnitario1 es el precio para el tamaño tipo 1.
+     * precioUnitario2 es el precio para el tamaño tipo 2.
+     * precioUnitario3 es el precio para el tamaño tipo 3.
+     */
+    Pines(string tema, int cantidad, int tamano, string descripcion, 
+          float precioUnitario1, float precioUnitario2, float precioUnitario3) 
+        : Producto(cantidad, tamano, descripcion, precioUnitario1, precioUnitario2, precioUnitario3) {
+        temaPines = tema;
+    }
 
-        void set_tema(string _tema){
-            tema = _tema;
-        }
+    /**
+     * Obtiene el tema del pin.
+     * return tema del pin.
+     */
+    string getTema() {
+        return temaPines;
+    }
+
+    /**
+     * Establece el tema del pin.
+     * tema asignado al pin.
+     */
+    void setTema(string tema) {
+        temaPines = tema;
+    }
 };
+
 #endif
