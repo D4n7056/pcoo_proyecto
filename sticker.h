@@ -1,30 +1,61 @@
+// alumno: Daniela Iliana Rivera García
+// matricula: A07107056
 #ifndef STICKER_H
 #define STICKER_H
 
 #include <iostream>
 #include "producto.h"
+
 using namespace std;
 
+/**
+ * Clase Sticker que hereda de Producto.
+ */
 class Sticker : public Producto {
-    private:
-        string estilo;
+private:
+    // Atributo privado
+    string estiloSticker;
 
-    public: 
-        Sticker(): Producto() {
-            estilo = "tradicional";
-        }
+public:
+    /**
+     *  Constructor por defecto. 
+     * Inicializa con valores predeterminados.
+     */
+    Sticker() : Producto() {
+        estiloSticker = "Tradicional";
+    }
 
-        Sticker(string _estilo, int _cantidad, int _tamano, string _descripcion, float _precio_unitario_1, float _precio_unitario_2, float _precio_unitario_3 ) :  Producto( _cantidad, _tamano, _descripcion, _precio_unitario_1, _precio_unitario_2, _precio_unitario_3){
-            estilo = _estilo;
-        }
+    /**
+     * Constructor con parámetros.
+     * estilo del sticker.
+     * cantidad de stickers.
+     * tamano del sticker.
+     * descripcion del sticker.
+     * precio1 precio para tamaño 1.
+     * precio2 precio para tamaño 2.
+     * precio3 precio para tamaño 3.
+     */
+    Sticker(string estilo, int cantidad, int tamano, string descripcion, 
+            float precio1, float precio2, float precio3) 
+        : Producto(cantidad, tamano, descripcion, precio1, precio2, precio3) {
+        estiloSticker = estilo;
+    }
 
-        string get_estilo(){
-            return estilo;
-        }
+    /**
+     * Obtiene el estilo del sticker.
+     * return estilo del sticker.
+     */
+    string getEstilo() {
+        return estiloSticker;
+    }
 
-        void set_estilo (string _estilo){
-            estilo = _estilo;
-        }
-
+    /**
+     * Establece el estilo del sticker.
+     * estilo nuevo del sticker.
+     */
+    void setEstilo(string estilo) {
+        estiloSticker = estilo;
+    }
 };
+
 #endif
