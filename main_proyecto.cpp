@@ -5,91 +5,85 @@
 #include "pines.h"
 #include "artista.h"
 
+
 using namespace std;
 
-int main(){   
-    Sticker gato("tradicional", 1, 1, "imagen de gato impresa en papel adhesivo", 5, 10, 15);
-    gato.calcular_precio();
-    gato.imprime_datos();
+/**
+ * Función main para probar las clases de productos y la clase Artista.
+ */
+int main() {   
+    // Crear y usar metodos con un objeto Sticker
+    Sticker stickerGato("Tradicional", 1, 1, "Imagen de gato impresa en papel adhesivo", 5, 10, 15);
+    stickerGato.calcularPrecio();
+    stickerGato.imprimeDatos();
 
-    gato.set_cantidad(2);
-    gato.set_descripcion("dibujo de un gato adhesivo");
-    gato.set_tamano(2);
-    gato.calcular_precio();
-    gato.imprime_datos();
+    stickerGato.setCantidad(2);
+    stickerGato.setDescripcion("Dibujo de un gato adhesivo");
+    stickerGato.setTamano(2);
+    stickerGato.calcularPrecio();
+    stickerGato.imprimeDatos();
 
-    Dibujos paisaje("acuarela","tradicional", 1,2,"dibujo de un paisaje", 25, 50, 100);
-    paisaje.calcular_precio();
-    paisaje.imprime_datos();
+    // Crear y usar metodos con un objeto Dibujos
+    Dibujos dibujoPaisaje("Acuarela", "Tradicional", 1, 2, "Dibujo de un paisaje", 25, 50, 100);
+    dibujoPaisaje.calcularPrecio();
+    dibujoPaisaje.imprimeDatos();
 
-    paisaje.set_cantidad(3);
-    paisaje.set_descripcion("dibujo de un paisaje");
-    paisaje.set_tamano(1);
-    paisaje.set_material("lapices de colores");
-    paisaje.set_estilo("digital");
-    paisaje.calcular_precio();
-    paisaje.imprime_datos();
+    dibujoPaisaje.setCantidad(3);
+    dibujoPaisaje.setDescripcion("Dibujo de un paisaje");
+    dibujoPaisaje.setTamano(1);
+    dibujoPaisaje.setMaterial("Lápices de colores");
+    dibujoPaisaje.setEstilo("Digital");
+    dibujoPaisaje.calcularPrecio();
+    dibujoPaisaje.imprimeDatos();
     
-    Botones perro("animales", 1, 3, "boton con imagen de perro", 15, 25, 30);
-    perro.calcular_precio();
-    perro.imprime_datos();
+    // Crear y usar metodos con un objeto Botones
+    Botones botonPerro("Animales", 1, 3, "Botón con imagen de perro", 15, 25, 30);
+    botonPerro.calcularPrecio();
+    botonPerro.imprimeDatos();
 
-    perro.set_cantidad(2);
-    perro.set_descripcion("boton de un perro de felpa");
-    perro.set_tamano(2);
-    perro.set_tema("juegetes");
-    perro.calcular_precio();
-    perro.imprime_datos();
+    botonPerro.setCantidad(2);
+    botonPerro.setDescripcion("Botón de un perro de felpa");
+    botonPerro.setTamano(2);
+    botonPerro.setTema("Juguetes");
+    botonPerro.calcularPrecio();
+    botonPerro.imprimeDatos();
 
-    Pines planeta("planetas", 1, 1, "pin de saturno", 10, 25, 40);
-    planeta.calcular_precio();
-    planeta.imprime_datos(); 
+    // Crear y usar metodos con un objeto Pines
+    Pines pinPlaneta("Planetas", 1, 1, "Pin de Saturno", 10, 25, 40);
+    pinPlaneta.calcularPrecio();
+    pinPlaneta.imprimeDatos(); 
     
-    planeta.set_cantidad(3);
-    planeta.set_descripcion("pin de un planeta");
-    planeta.set_tamano(1);
-    planeta.set_tema("universo");
-    planeta.calcular_precio();
-    planeta.imprime_datos();
+    pinPlaneta.setCantidad(3);
+    pinPlaneta.setDescripcion("Pin de un planeta");
+    pinPlaneta.setTamano(1);
+    pinPlaneta.setTema("Universo");
+    pinPlaneta.calcularPrecio();
+    pinPlaneta.imprimeDatos();
 
-    vector <Producto> productos = {
-        Sticker("tradicional", 1, 1, "imagen de gato impresa en papel adhesivo", 5, 10, 15),
-        Dibujos("acuarela","tradicional", 1,2,"dibujo de un paisaje", 25, 50, 100),
-        Botones("animales", 1, 3, "boton con imagen de perro", 15, 25, 30),
-        Pines("planetas", 1, 1, "pin de saturno", 10, 25, 40),
-        };
+    // Crear un vector de productos
+    vector<Producto> listaProductos = {
+        Sticker("Tradicional", 1, 1, "Imagen de gato impresa en papel adhesivo", 5, 10, 15),
+        Dibujos("Acuarela", "Tradicional", 1, 2, "Dibujo de un paisaje", 25, 50, 100),
+        Botones("Animales", 1, 3, "Botón con imagen de perro", 15, 25, 30),
+        Pines("Planetas", 1, 1, "Pin de Saturno", 10, 25, 40),
+    };
 
-    Artista artista("Van Gogh","@VanGogh", productos);
+    // Crear y usar metodos con un objeto Artista
+    Artista artista("Van Gogh", "@VanGogh", listaProductos);
     
-    artista.mostrar_informacion();
+    artista.mostrarInformacion();
 
-    artista.agregar_producto(2, 3, "dibujo en carbón", 25, 50, 75);
+    artista.agregarProducto(2, 3, "Dibujo en carbón", 25, 50, 75);
 
-    artista.mostrar_informacion();
+    artista.mostrarInformacion();
 
-    if (artista.eliminar_producto(1)) {
+    if (artista.eliminarProducto(1)) {
         cout << "Producto eliminado con éxito.\n";
-    } 
-    else {
+    } else {
         cout << "Error al eliminar el producto.\n";
     }
 
-    artista.mostrar_informacion();
+    artista.mostrarInformacion();
 
     return 0;
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
