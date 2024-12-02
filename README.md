@@ -18,3 +18,7 @@ Cada clase permite:
 -Calcular el precio estimado con el método calcular_precio().
 -Mostrar los detalles del elemento con el método imprime_datos().
 -Modificar los atributos o regresar la información de estos con los getters y setters.
+## Correcciones realizadas:
+El programa se modifico para adaptarse al estándar de codificación establecido para el proyecto
+## Consideraciones para el proyecto:
+- Las clases deberán ser nombradas tal y como aparecen en el archivo "main_proyecto.cpp"
