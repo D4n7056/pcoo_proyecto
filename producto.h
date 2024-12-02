@@ -1,110 +1,121 @@
+// alumno: Daniela Iliana Rivera García
+// matricula: A07107056
 #ifndef PRODUCTO_H
 #define PRODUCTO_H
 
 #include <iostream>
+
 using namespace std;
 
-class Producto{
-    //atributos
-    protected: 
-        int cantidad;
-        int tamano;
-        string descripcion;
-        float precio_unitario_1;
-        float precio_unitario_2;
-        float precio_unitario_3;
-    
-    //metodos
-    public:
-        //consturctor por omision
-        Producto (){
-            cantidad = 1;
-            tamano = 1;
-            descripcion = "producto";
-            precio_unitario_1 = 5;
-            precio_unitario_2 = 10;
-            precio_unitario_3 = 15;
-        }
+// Clase Producto base
+class Producto {
+protected:
+    // Atributos protegidos
+    int cantidadProducto;
+    int tamanoProducto;
+    string descripcionProducto;
+    float precioUnitario1;
+    float precioUnitario2;
+    float precioUnitario3;
 
-        //constructor por parametros 
-        Producto(int _cantidad, int _tamano, string _descripcion, float _precio_unitario_1,float _precio_unitario_2, float _precio_unitario_3){
-            cantidad = _cantidad;
-            tamano = _tamano;
-            descripcion = _descripcion;
-            precio_unitario_1 = _precio_unitario_1;
-            precio_unitario_2 = _precio_unitario_2;
-            precio_unitario_3 = _precio_unitario_3; 
-        }
+public:
+    // Constructor por defecto
+    Producto() {
+        cantidadProducto = 1;
+        tamanoProducto = 1;
+        descripcionProducto = "Producto";
+        precioUnitario1 = 5.0;
+        precioUnitario2 = 10.0;
+        precioUnitario3 = 15.0;
+    }
 
-        //getters
-        int get_cantidad(){
-            return cantidad;
-        }
-        int get_tamano(){
-            return tamano;
-        }
-        string get_descripcion(){
-            return descripcion;
-        }
-        float get_precio_unitario_1(){
-            return precio_unitario_1;
-        }
-        float get_precio_unitario_2(){
-            return precio_unitario_2;
-        }
-        float get_precio_unitario_3(){
-            return precio_unitario_3;
-        }
+    /**
+     * Constructor con parámetros.
+     * cantidad del producto.
+     * tamano del producto.
+     * descripcion del producto.
+     * precio1 para tamaño 1.
+     * precio2 para tamaño 2.
+     * precio3 para tamaño 3.
+     */
+    Producto(int cantidad, int tamano, string descripcion, float precio1, float precio2, float precio3) {
+        cantidadProducto = cantidad;
+        tamanoProducto = tamano;
+        descripcionProducto = descripcion;
+        precioUnitario1 = precio1;
+        precioUnitario2 = precio2;
+        precioUnitario3 = precio3;
+    }
 
-        //setters
-        void set_cantidad(int _cantidad){
-            cantidad = _cantidad;
-        }
-        void set_tamano(int _tamano){
-            tamano = _tamano;
-        }
-        void set_descripcion(string _descripcion){
-            descripcion = _descripcion;
-        }
-        void set_precio_unitario_1(float _precio_unitario_1){
-            precio_unitario_1 = _precio_unitario_1;
-        }
-        void set_precio_unitario_2(float _precio_unitario_2){
-            precio_unitario_2 = _precio_unitario_2;
-        }
-        void set_precio_unitario_3(float _precio_unitario_3){
-            precio_unitario_3 = _precio_unitario_3;
-        }
+    // Getters
+    int getCantidad() {
+        return cantidadProducto;
+    }
+    int getTamano() {
+        return tamanoProducto;
+    }
+    string getDescripcion() {
+        return descripcionProducto;
+    }
+    float getPrecioUnitario1() {
+        return precioUnitario1;
+    }
+    float getPrecioUnitario2() {
+        return precioUnitario2;
+    }
+    float getPrecioUnitario3() {
+        return precioUnitario3;
+    }
 
-        //metodo virtual para calcular el precio total
-        virtual float calcular_precio(){
-                float precio = 0;
-                if (tamano == 1){
-                    precio = precio_unitario_1 * cantidad;
-                    }
+    // Setters
+    void setCantidad(int cantidad) {
+        cantidadProducto = cantidad;
+    }
+    void setTamano(int tamano) {
+        tamanoProducto = tamano;
+    }
+    void setDescripcion(string descripcion) {
+        descripcionProducto = descripcion;
+    }
+    void setPrecioUnitario1(float precio1) {
+        precioUnitario1 = precio1;
+    }
+    void setPrecioUnitario2(float precio2) {
+        precioUnitario2 = precio2;
+    }
+    void setPrecioUnitario3(float precio3) {
+        precioUnitario3 = precio3;
+    }
 
-                else if (tamano == 2){
-                        precio = precio_unitario_2 * cantidad;
-                    }
-
-                else if (tamano == 3){
-                            precio = precio_unitario_3 * cantidad;
-                    }
-                else{
-                    cout << "valor no valido" << endl;
-                    return 0;
-                    }
-                return precio;
-                }
-        virtual void imprime_datos(){
-            cout << "CANTIDAD: " << cantidad << endl;
-            cout << "TAMAÑO: " << tamano << endl;
-            cout << "DESCRIPCION: " << descripcion << endl;
-            cout << "PRECIO: " << calcular_precio() << endl;
-            cout << "------------------------\n";
-            cout << "" << endl;            
+    /**
+     * Calcula el precio total basado en el tamaño y cantidad.
+     * return precio total del producto.
+     */
+    virtual float calcularPrecio() {
+        float precio = 0.0;
+        if (tamanoProducto == 1) {
+            precio = precioUnitario1 * cantidadProducto;
+        } else if (tamanoProducto == 2) {
+            precio = precioUnitario2 * cantidadProducto;
+        } else if (tamanoProducto == 3) {
+            precio = precioUnitario3 * cantidadProducto;
+        } else {
+            cout << "Valor no válido para el tamaño." << endl;
+            return 0.0;
         }
-        
+        return precio;
+    }
+
+    /**
+     * Metodo virtual para imprimir los datos del producto.
+     */
+    virtual void imprimeDatos() {
+        cout << "CANTIDAD: " << cantidadProducto << endl;
+        cout << "TAMAÑO: " << tamanoProducto << endl;
+        cout << "DESCRIPCIÓN: " << descripcionProducto << endl;
+        cout << "PRECIO: " << calcularPrecio() << endl;
+        cout << "------------------------\n";
+    }
 };
 
 #endif
