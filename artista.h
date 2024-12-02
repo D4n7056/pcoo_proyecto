@@ -1,60 +1,92 @@
+// alumno: Daniela Iliana Rivera García
+// matricula: A07107056
 #ifndef ARTISTA_H
 #define ARTISTA_H
 
 #include <iostream>
 #include <vector>
 #include "producto.h"
+
 using namespace std;
 
-class Artista{
-    private: 
-        string nombre;
-        string redes;
-        vector <Producto> productos;
-    public:
-        Artista(){
-            nombre = "anonimo";
-            redes = "@usuario_nuevo";
-        }
+// Clase Artista
+class Artista {
+private:
+    // Variables privadas
+    string nombreArtista;
+    string redesSociales;
+    vector<Producto> listaProductos;
 
-        Artista(string _nombre, string _redes, vector <Producto> _productos){
-            nombre = _nombre;
-            redes = _redes;
-            productos = _productos;
-        }
+public:
+    // Constructor por defecto
+    Artista() {
+        nombreArtista = "Anonimo";
+        redesSociales = "@usuarioNuevo";
+    }
 
-        bool eliminar_producto(int indice){
-            productos.erase(productos.begin() + indice);
+    // Constructor con parámetros
+    Artista(string nombre, string redes, vector<Producto> productos) {
+        nombreArtista = nombre;
+        redesSociales = redes;
+        listaProductos = productos;
+    }
+
+    /**
+     * Metodo para eliminar un producto de la lista de productos del artista.
+     * indice es el indice del producto a eliminar.
+     * return true si el producto fue eliminado exitosamente.
+     */
+    bool eliminarProducto(int indice) {
+        if (indice >= 0 && indice < listaProductos.size()) {
+            listaProductos.erase(listaProductos.begin() + indice);
             return true;
         }
+        return false; // El índice es inválido
+    }
 
-        Producto agregar_producto(int cantidad,int tamano, string descripcion, float precio_1, float precio_2, float precio_3){
-            Producto nuevo(cantidad, tamano, descripcion, precio_1, precio_2, precio_3);
-            productos.push_back(nuevo);
-            return nuevo;
+    /**
+     * Agregar un nuevo producto al inventario del artista.
+     * cantidad es la cantidad de productos.
+     * tamano es el tamaño del producto.
+     * descripcion es la descripción breve del producto.
+     * precio1 es el precio para el tamaño tipo 1.
+     * precio2 es el precio para el tamaño tipo 2.
+     * precio3 es el precio para el tamaño tipo 3.
+     * return el objeto del producto recién agregado.
+     */
+    Producto agregarProducto(int cantidad, int tamano, string descripcion, float precio1, float precio2, float precio3) {
+        Producto nuevoProducto(cantidad, tamano, descripcion, precio1, precio2, precio3);
+        listaProductos.push_back(nuevoProducto);
+        return nuevoProducto;
+    }
+
+    /**
+     * Metodo que muestra la información completa del artista y sus productos.
+     */
+    void mostrarInformacion() {
+        cout << "---------- ARTISTA ----------" << endl;
+        cout << "Nombre: " << nombreArtista << endl;
+        cout << "Redes Sociales: " << redesSociales << endl;
+        cout << "--------- PRODUCTOS ---------" << endl;
+
+        for (Producto& producto : listaProductos) {
+            producto.imprimeDatos();
         }
-
-        void mostrar_informacion() {
-        cout << "----------ARTISTA----------" << endl;
-        cout << "NOMBRE: " << nombre << endl;
-        cout << "REDES: " << redes << endl;
-        cout << "" << endl;
-        cout << "---------PRODUCTOS---------" << endl;
-        for (Producto& producto : productos) {
-                producto.imprime_datos();
-            }
-        cout << "----------------------------\n";
+        cout << "-----------------------------\n";
     }
 
-    string get_nombre(){
-    return nombre;
+    // Métodos getter
+    string getNombre() {
+        return nombreArtista;
     }
 
-    string get_redes(){ 
-        return redes; 
+    string getRedesSociales() {
+        return redesSociales;
     }
-    vector<Producto> get_productos(){ 
-        return productos; 
+
+    vector<Producto> getListaProductos() {
+        return listaProductos;
     }
 };
+
 #endif
